@@ -363,7 +363,7 @@ menu = function()
 		if args[0] == "lans" then
 			
 			
-			lans = target_router.computers_lan_ip
+			lans = target_router.devices_lan_ip
 			
 			for lan in lans
 				if target_router.public_ip == get_router.public_ip and get_shell.host_computer.lan_ip == lan then
