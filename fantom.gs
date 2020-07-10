@@ -112,7 +112,7 @@ hack = function(ip,port)
 	port = r.ping_port(port)
 
 	if port != null and port.is_closed then
-		system_message("closed ports are non hackable")
+		system_message("closed ports are non hackable due to recent gh update")
 		usr_shell
 	end if
 
