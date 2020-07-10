@@ -113,6 +113,7 @@ hack = function(ip,port)
 
 	if port != null and port.is_closed then
 		system_message("closed ports are non hackable")
+		usr_shell
 	end if
 
 	lib = netsess.dump_lib
