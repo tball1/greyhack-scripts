@@ -108,6 +108,13 @@ hack = function(ip,port)
 	
 	netsess = mx.net_use(ip,port)
 	
+	r=get_router(ip)
+	port = r.ping_port(port)
+
+	if port != null and port.is_closed then
+		system_message("closed ports are non hackable")
+	end if
+
 	lib = netsess.dump_lib
 	addrs = mx.scan(lib)
 	
@@ -396,7 +403,7 @@ hack = function(ip,port)
 			if args[0] == "lans" then
 				
 				
-				lans = target_router.computers_lan_ip
+				lans = target_router.devices_lan_ip
 				
 				for lan in lans
 					if target_router.public_ip == get_router.public_ip and get_shell.host_computer.lan_ip == lan then
