@@ -267,7 +267,7 @@ hack = function(ip,port)
 			end if
 			
 			print("<color=green>Fantom has secured this machine.")
-			print("<color=red>You have too run sudo an get root before you can do anything or your machine</color>")
+			print("<color=red>You have too run sudo an get root before you can do anything on your machine</color>")
 			
 		end if
 		
