@@ -25,9 +25,8 @@ system_message = function(text)
 end function
 
 
-if active_user == "root" then
-	system_message("\nRunning Fantom in a root shell is the only way too run most security commands.")
-end if
+system_message("\nRunning Fantom in a root shell is the only way too run most commands when you type 'shell'.")
+
 
 
 
