@@ -1,4 +1,21 @@
 theme = {}
+
+//This is an outdated copy of Doom I lost the original
+
+//Doom was originally going to have a feature
+//where users could make an share themes
+//I ended up never impelmenting this fully
+
+//Doom had a feature where you could rewhitelist your new machine
+//if you were ever busted by the authorities
+//i ended up finding a account takeover bug
+//which couldnt be solved unless i wanted too redesign some stuff
+
+
+
+//Doom was made by potato(tb in the discord)
+
+
 theme.warning = "red"
 theme.text = "white"
 theme.notify="green"
@@ -14,10 +31,10 @@ r=get_router()
 
 //Server configuration information
 
-ip = "25.224.104.199"
+ip = ""
 port = 22
-username = "root"
-password = "pizza"
+username = ""
+password = ""
 
 doom_version = "0.1"
 
@@ -28,10 +45,10 @@ ask = function(q,yes,no)
 	
 	print(q+"\n"+yes+"/"+no+"\n")
 	s=user_input
-	if s==yes then
+	if s=="yes" then
 		return true
 	end if
-	if s==no then
+	if s=="no" then
 		return false
 	end if
 	
@@ -58,6 +75,7 @@ color("notify","Successfully connected too the server!")
 
 print("Please either <color=blue>login</color> or <color=blue>register</color> or <color=red>rewhitelist</color>\n")
 said = user_input()
+
 
 if said == "rewhitelist" then
 	print("This feature changes the IP tied to a account")
