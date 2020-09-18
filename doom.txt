@@ -1,3 +1,10 @@
+//when I released doom people recognized me as the guy who made doom in/out of game
+//it was nice knowing people liked my stuff that much
+
+//just thanks a ton
+//only about 10 years late too say it lol
+// - potato
+
 theme = {}
 
 //This is an outdated copy of Doom I lost the original
