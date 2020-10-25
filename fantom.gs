@@ -378,7 +378,7 @@ hack = function(ip,port)
 				print("ESSID: "+target_router.essid_name)
 				print("BSSID: "+target_router.bssid_name)
 				crypto.airmon("start","eth0")
-				networks = get_shell.host_computer.wifi_networks("eth0")
+				networks = get_shell.host_computer.wifi_networks("wlan0")
 				if networks.indexOf(target_router.essid_name) != null and networks.indexOf(target_router.bssid_name) != null then
 					print("<color=green> This WIFI is in range!</color>")
 				else
