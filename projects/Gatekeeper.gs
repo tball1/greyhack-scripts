@@ -1,5 +1,5 @@
 //NOTE:
-	//"Gatekeeper" is a "hacking" tool for the hacking simulation game called "Grey Hack" and is NOT related to real life "hacking"
+  //"Gatekeeper" is a "hacking" tool for the hacking simulation game called "Grey Hack" and is NOT related to real life "hacking"
   //Gatekeeper is not yet released
 
 //Ever wanted too make/manage your own huge hacking project for other players too use?
@@ -13,8 +13,8 @@
 //Gatekeeper rules/terms:
 	
 	//Gatekeeper developers cannot be suspended
-  //Gatekeeper developers can terminate your project without warning should you break the rules
-  //Gatekeeper developers are hard coded admins in all projects
+  	//Gatekeeper developers can terminate your project without warning should you break the rules
+  	//Gatekeeper developers are hard coded admins in all projects
 
 	//Attempting to hack Gatekeeper devs
 	//	Gatekeeper will by default not hack itself or any devs
