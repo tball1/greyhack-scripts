@@ -6,6 +6,7 @@ You are welcome to do whatever with this
 though please change the name
 
 PLANNED UPDATES FOR FANTOM:
-  - reverse shell support
-  - sniffer support
+  - reverse shell support - ADDED
+  - sniffer support - ADDED
+  
   
