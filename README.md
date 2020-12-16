@@ -12,8 +12,8 @@ ADDED UPDATES FOR FANTOM:
   - minor changes 
  
 PLANNED UPDATES FOR FANTOM:
-  - Making the commandline more like plasmas (by Nyx)
-      Reasoning: because in fantom you must be inspecting an ip too run things like sniffer which isnt that great
+  - Making the commandline more like plasmas (by Nyx):
+      - because in fantom you must be inspecting an ip too run things like sniffer which isnt that great
    
   - fantom will have commands for rented servers:
       - remotely secure servers
