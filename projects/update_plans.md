@@ -12,4 +12,3 @@ PLANNED UPDATES FOR FANTOM:
       - remotely nuke servers
       - monitor processes
       - prevent new processes
-      - logless shell
