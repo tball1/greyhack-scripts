@@ -47,7 +47,7 @@ hackrouter = function(ip,lan)
 
 		pwd = ex.File("/etc/passwd")
 		if pwd != null then
-			print(pwd.content)
+			print(pwd.get_get_content)
 		end if
 
 		end if
@@ -119,7 +119,7 @@ hack = function(ip,port)
 			pwd = ex.File("/etc/passwd")
 			if not pwd == null then
 				if pwd.has_permission("r") then
-					print(pwd.content)
+					print(pwd.get_content)
 				else
 					print("<color=red>Fantom doesn't have permission too read /etc/passwd</color>")
 				end if
@@ -212,7 +212,7 @@ system_shell = function()
 	file = get_shell.host_computer.File(filename)
 	if not file == null then
 
-	logins = file.content.split("\n")
+	logins = file.get_content.split("\n")
 	for login in logins
 		info = login.split(":")
 		accnum = info[0]
