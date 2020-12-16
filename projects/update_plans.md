@@ -12,3 +12,5 @@ PLANNED UPDATES FOR FANTOM:
       - remotely nuke servers
       - monitor processes
       - prevent new processes
+
+NOTE: I am going too make the server management tool its own program for reasons
