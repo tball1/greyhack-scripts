@@ -5,4 +5,7 @@ https://store.steampowered.com/app/605230/Grey_Hack/
 You are welcome to do whatever with this
 though please change the name
 
-EDIT: I've changed my mind fantom will continue getting updates for new grey hack versions
+PLANNED UPDATES FOR FANTOM:
+  - reverse shell support
+  - sniffer support
+  
