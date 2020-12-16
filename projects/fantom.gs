@@ -47,7 +47,7 @@ hackrouter = function(ip,lan)
 
 		pwd = ex.File("/etc/passwd")
 		if pwd != null then
-			print(pwd.get_get_content)
+			print(pwd.get_content)
 		end if
 
 		end if
