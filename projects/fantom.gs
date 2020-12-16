@@ -184,13 +184,27 @@ system_shell = function()
 		print("\n<color=green>			Security Commands.</color>\n")
 		
 		print("		secure -> Removes programs/files that introduce security issues also chmods the system.")
-		print("		decipher [file] -> - Fancy version of the decipher tool\n")
-		
+		print("		decipher [file] -> Fancy version of the decipher tool\n")
+		print("		rshell_interface -> Fantom's rshell interface")
 		print("		<i>More soon..</i>\n")
 		
 		
 	end if
-	
+
+	if args[0] == "rshell_interface" then
+		victims = mx.rshell_server
+		l = {}
+		c = 0
+		for victim in victims
+			ip = victim.host_computer.public_ip
+			local = victim.host_computer.local_ip	
+			print(c+". shell@"+ip+"-"+local)
+			l[c]=victim
+			c = c +1
+		end for
+		pick = user_input("number:")
+		l[pick.to_int].start_terminal
+	end if
 
 	if args[0] == "decipher" then
 
@@ -304,6 +318,7 @@ menu = function()
 			print("		router -> Gets the routers local IP.")
 			print("		decipher [hash] -> Deciphers a hash")
 			print("		smtp [port] -> Shows smtp information")
+			print("		sniffer -> Sniffs for outbound connections")
 			
 			print("\n<color=green>			Hacking Commands.</color>\n")
 			print("		hack [port] -> Have Fantom do the hacking for you")
@@ -314,6 +329,10 @@ menu = function()
 			
 		end if
 		
+		if args[0] == "sniffer" then
+			mx.sniffer
+		end if
+
 		if args[0] == "hack" then
 			port = args[1].to_int
 			hack(target_router.public_ip,port)
