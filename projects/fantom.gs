@@ -1,3 +1,5 @@
+//https://discord.gg/dkaMDj8c6b if you want
+
 hc=get_shell.host_computer
 mx = include_lib("/lib/metaxploit.so")
 crypto = include_lib("/lib/crypto.so")
