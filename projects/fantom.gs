@@ -187,7 +187,8 @@ system_shell = function()
 		
 		print("		secure -> Removes programs/files that introduce security issues also chmods the system.")
 		print("		decipher [file] -> Fancy version of the decipher tool\n")
-		print("		rshell_interface -> Fantom's rshell interface")
+        print("		rshell_interface -> Fantom's rshell interface")
+        print("     wifi_menu       -> Fantom's wifi cracking toolset")
 		print("		<i>More soon..</i>\n")
 		
 		
@@ -207,6 +208,67 @@ system_shell = function()
 		pick = user_input("number:")
 		l[pick.to_int].start_terminal
 	end if
+
+    if args[0] == "wifi_menu" then
+        print("<color=green>Fantom WI-FI cracking menu</color>")
+        print("1. Crack all visible wifi")
+        print("2. Crack specific wifi")
+
+        pick = user_input("number:")
+        pick = pick.to_int
+
+        if pick == 1 then
+            netwrks = get_shell.host_computer.wifi_networks("wlan0")
+            c = 0
+            l = {}
+            for network in netwrks
+                bssid = network.split(" ")[0]
+                pwr = network.split(" ")[1].replace("%","")
+                pwr = pwr.to_int
+                essid = network.split(" ")[2]
+                l[c] = [essid,pwr,bssid]
+                print(c+". "+essid+" "+pwr)
+                c=c+1
+            end for
+            p = user_input("number:").to_int
+            opt = l[p]
+
+            crypto.airmon("start","wlan0")
+            crypto.aireplay(opt[2],opt[0],300000/pwr)
+            
+
+            if active_user == "root" then
+                 pass = crypto.aircrack("/root/file.cap")
+                 print(pass)
+                 return
+            end if
+            
+            pass = crypto.aircrack("/home/"+active_user+"/file.cap")
+            print(pass)
+
+        end if
+
+
+        if pick == 2 then
+
+            essid = user_input("ESSID:")
+            pwr = user_input("PWR% ").to_int
+            bssid = user_input("BSSID:")
+            crypto.airmon("start","wlan0")
+
+            crypto.aireplay(bssid,essid,300000/pwr)
+
+            if active_user == "root" then
+                pass = crypto.aircrack("/root/file.cap")
+                print(pass)
+            end if
+
+            pass = crypto.aircrack("/home/"+active_user+"/file.cap")
+            print(pass)
+
+        end if
+
+    end if
 
 	if args[0] == "decipher" then
 
@@ -387,7 +449,7 @@ menu = function()
 			lans = target_router.devices_lan_ip
 			
 			for lan in lans
-				if target_router.public_ip == get_router.public_ip and get_shell.host_computer.lan_ip == lan then
+				if target_router.public_ip == get_router.public_ip and get_shell.host_computer.local_ip == lan then
 					print(lan+" <color=green>[YOU]</color>")
 				else
 					print(lan)
