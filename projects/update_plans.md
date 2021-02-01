@@ -1,5 +1,7 @@
 ADDED UPDATES FOR FANTOM:
   - Fantom now features a wifi cracking menu in the system shell
+  - Fantom now has a dedicated command towards disabling firewalls "fwdisable"
+    - it can be found after entering a ip/domain after typing "commands"
    
  IN THE WORKS:
   - Fantom will support lan ips being typed in as a ip
