@@ -103,6 +103,59 @@ end function
 
 
 
+fwdisable = function(ip)
+	
+	r=get_router(ip)
+	
+	netsess = mx.net_use(ip)
+	
+	lib = netsess.dump_lib
+	addrs = mx.scan(lib)
+	
+	exhandler = function(addr,unsec)
+		ex = lib.overflow(addr,unsec)	
+
+		if typeof(ex) == "number" then
+			print("<color=green>Firewall disabled</color>")
+		end if
+
+	end function
+	
+	
+	for addr in addrs
+		
+		info = mx.scan_address(lib,addr)
+		info = info.remove("decompiling source...").remove("searching unsecure values...")
+		info = info[2:]
+		
+		while info.indexOf("Unsafe check: ") != null or info.indexOf("<b>") != null or info.indexOf("</b>") != null
+			info = info.remove("Unsafe check: ").remove("<b>").remove("</b>")
+		end while
+		
+		while info.indexOf("loop in array ") != null
+			info = info.replace("loop in array ", "<tag>")
+		end while
+		
+		while info.indexOf("string copy in ") != null
+			info = info.replace("string copy in ", "<tag>")
+		end while
+		
+		while info.indexOf("<tag>") != null
+			a = info.indexOf("<tag>") + 5
+			info = info.remove(info[:a])
+			str = info[:info.indexOf(".")]
+			exhandler(addr,str)
+		end while
+		
+		//print(info)
+		
+	end for
+	
+	
+end function
+
+
+
 
 
 
@@ -398,6 +451,7 @@ menu = function()
 			print("\n<color=green>			Hacking Commands.</color>\n")
 			print("		hack [port] -> Have Fantom do the hacking for you")
 			print("		routerhack [lan] -> Fantom will hack this lan address through the router")
+			print("		fwdisable [ip] 	-> Fantom will attempt too disable the firewall")
 
 			
 			print("\n	<i>More soon..</i>")
@@ -406,6 +460,10 @@ menu = function()
 		
 		if args[0] == "sniffer" then
 			mx.sniffer
+		end if
+
+		if args[0] == "fwdisable" then
+			fwdisable(target_router.public_ip)
 		end if
 
 		if args[0] == "hack" then
