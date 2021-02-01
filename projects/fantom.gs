@@ -5,16 +5,18 @@ mx = include_lib("/lib/metaxploit.so")
 crypto = include_lib("/lib/crypto.so")
 
 
+
 if not mx then
-	mx = include_lib(hc.current_path+"/metaxploit.so")
+	mx = include_lib(current_path+"/metaxploit.so")
 	if not mx then
-		exit("Please install metaxploit.so in /lib or in installation directory.")
+		print("Please install metaxploit.so in /lib or in installation directory.")
+		print("alot of commands are disabled")
 	end if
 end if
 
 
 if not crypto then
-	crypto = include_lib(hc.current_path+"/crypto.so")
+	crypto = include_lib(current_path+"/crypto.so")
 	if not crypto then
 		exit("Please install crypto.so in /lib or in installation directory.")
 	end if
@@ -195,6 +197,10 @@ system_shell = function()
 	end if
 
 	if args[0] == "rshell_interface" then
+		if mx == null then
+			print("This command does not run without metaxploit.so")
+			return
+		end if
 		victims = mx.rshell_server
 		l = {}
 		c = 0
@@ -325,6 +331,11 @@ menu = function()
 	
 	target = user_input("\n<color=green>Target IP/DOMAIN: </color> ")
 	if target == "shell" then system_shell end if
+
+	if mx == null and target != "shell" then
+		print("Server information cannot be shown without metaxploit.so")
+		menu
+	end if
 	
 	target_router = get_router(target)
 	target_domain = nslookup(target)
@@ -398,11 +409,19 @@ menu = function()
 		end if
 
 		if args[0] == "hack" then
+			if mx == null then
+				print("This command does not run without metaxploit.so")
+				menu
+			end if
 			port = args[1].to_int
 			hack(target_router.public_ip,port)
 		end if
 
 		if args[0] == "routerhack" then
+			if mx == null then
+				print("This command does not run without metaxploit.so")
+				menu
+			end if
 			lan = args[1]
 			hackrouter(target_router.public_ip,lan)
 		end if
