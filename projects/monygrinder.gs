@@ -47,7 +47,7 @@ farm = function()
 
         exhandler = function(addr,unsec)
             ex = lib.overflow(addr,unsec)
-            
+            print("\n"+typeof(ex)+"\n")
             if typeof(ex) == "computer" then
 
                 users = ex.File("/home").get_folders
@@ -61,13 +61,78 @@ farm = function()
 
                     print("<color=purple>BANK ACCOUNT: </color>"+bankFile.get_content)
                     storage = get_shell.host_computer.File("/home/"+active_user+"/banks")
+
                     storagedata = storage.get_content
                     storage.set_content(storagedata+"\n"+bankFile.get_content)
 
                 end for
 
             end if
+
+            if typeof(ex) == "shell" then
+
+                
+                users = ex.host_computer.File("/home").get_folders
+
+                for user in users
+                    bankFile = ex.host_computer.File("/home/"+user.name+"/Config/Bank.txt")
+                    if bankFile == null then
+                        print(user.name+ " doesnt have a bank account txt file")
+                        continue
+                    end if
+
+                    print("<color=purple>BANK ACCOUNT: </color>"+bankFile.get_content)
+                    storage = get_shell.host_computer.File("/home/"+active_user+"/banks")
+
+                    storagedata = storage.get_content
+                    storage.set_content(storagedata+"\n"+bankFile.get_content)
+
+                end for
+
+
+            end if
             
+            if typeof(ex) == "file" then
+                
+
+                if ex.parent.name == "/" then
+
+
+                    for folder in ex.parent.get_folders
+                        if folder.name == "home" then
+                            users = folder.get_folders
+                            for user in users
+                                files = user.get_folders
+                                for file in files
+                                    if file.name == "Config" then
+                                        files = file.get_files
+                                        for file in files
+                                            if file.name == "Bank.txt" then
+                                                //print(file.get_content)
+                                                //print("here")
+                                                storage = get_shell.host_computer.File("/home/"+active_user+"/banks")
+                                                //print("here")
+                                                storagedata = storage.get_content
+                                                //print("here")
+                                                storage.set_content(storagedata+"\n"+file.get_content)
+                                                //print("here")
+                                                farm
+                                            end if
+                                        end for
+                                    end if
+                                end for
+                            end for
+                        end if
+                    end for
+
+
+                end if
+
+
+                print("\n"+ex.parent.name+" "+ex.name+"\n")
+
+            end if
+        
         end function
 
 
