@@ -4,5 +4,11 @@ ADDED UPDATES FOR FANTOM:
  IN THE WORKS:
   - Fantom will support lan ips being typed in as a ip
   - Fantom will ask if you want too use computer objects
-      - If you decline fantom will attempt too grab user details like normal
+      - If you decline fantom will attempt too grab user details and passwd like normal
+      - If you accept fantom will bring up a menu with options
+  
+  - Fantom will ask if you want too use file objects
+    - Picking yes will give you access too a file explorer
+    - Picking no will make fantom automatically use this to grab user details and passwd
+    
   
