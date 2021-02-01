@@ -451,7 +451,7 @@ menu = function()
 			print("\n<color=green>			Hacking Commands.</color>\n")
 			print("		hack [port] -> Have Fantom do the hacking for you")
 			print("		routerhack [lan] -> Fantom will hack this lan address through the router")
-			print("		fwdisable [ip] 	-> Fantom will attempt too disable the firewall")
+			print("		fwdisable	-> Fantom will attempt too disable the firewall")
 
 			
 			print("\n	<i>More soon..</i>")
