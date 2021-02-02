@@ -35,17 +35,18 @@ end if
 
 
 
-hackrouter = function(ip,lan)
+hackrouter = function(ip,port)
 	
 	r=get_router(ip)
 	
-	netsess = mx.net_use(ip)
+	netsess = mx.net_use(ip,port)
 	
 	lib = netsess.dump_lib
 	addrs = mx.scan(lib)
 	
+
 	exhandler = function(addr,unsec)
-		ex = lib.overflow(addr,unsec,lan)
+		ex = lib.overflow(addr,unsec)
 		
 		if typeof(ex) == "computer" then
 
@@ -456,7 +457,7 @@ menu = function()
 			
 			print("\n<color=green>			Hacking Commands.</color>\n")
 			print("		hack [port] -> Have Fantom do the hacking for you")
-			print("		routerhack [lan] -> Fantom will hack this lan address through the router")
+			print("		routerhack [port] -> Fantom will hack this port on the network")
 			print("		fwdisable	-> Fantom will attempt too disable the firewall")
 
 			
@@ -472,6 +473,8 @@ menu = function()
 			fwdisable(target_router.public_ip)
 		end if
 
+		
+
 		if args[0] == "hack" then
 			if mx == null then
 				print("This command does not run without metaxploit.so")
@@ -486,8 +489,8 @@ menu = function()
 				print("This command does not run without metaxploit.so")
 				menu
 			end if
-			lan = args[1]
-			hackrouter(target_router.public_ip,lan)
+			port = args[1].to_int
+			hackrouter(target_router.public_ip,port)
 		end if
 		
 		if args[0] == "smtp" then
