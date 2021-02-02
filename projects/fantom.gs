@@ -427,8 +427,14 @@ menu = function()
 	print(whois(target_router.public_ip)+"\n")
 	
 	print("\n<color=green>			Other information</color>\n")
-	kernel = mx.net_use(target_router.public_ip).dump_lib.version
-	print("kernel_router: "+kernel+"\n")
+	kernel = mx.net_use(target_router.public_ip)
+	if kernel != null then
+		kernel = kernel.dump_lib.version
+		print("kernel_router: "+kernel+"\n")
+	else
+		print("This network has a destroyed router")
+		menu
+	end if
 	
 	system_message("Type 'commands' too see commands.")
 	system_message("Alternatively you can type 'exit' too inspect another IP.")
