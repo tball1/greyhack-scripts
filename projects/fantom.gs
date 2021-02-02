@@ -411,6 +411,12 @@ menu = function()
 	
 	usedports = target_router.used_ports
 	
+
+	lans = target_router.devices_lan_ip
+
+
+
+	
 	print("\n<color=green>			Port information</color>\n")
 	
 	for port in usedports
@@ -422,6 +428,16 @@ menu = function()
 			print(service+" "+port.port_number+" "+port.get_lan_ip+" <color=green>[OPEN]</color>")
 		end if
 		
+	end for
+
+	print("\n<color=green>			Local port information</color>\n")
+	
+	for lan in lans
+		ports = target_router.device_ports(lan)
+		for port in ports
+			service = target_router.port_info(port)
+			print(service+" "+port.port_number+" "+port.get_lan_ip+" <color=green>[NETWORK]</color>")
+		end for
 	end for
 	
 	print("\n<color=green>			WHOIS information</color>")
