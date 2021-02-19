@@ -38,10 +38,10 @@ r=get_router()
 
 //Server configuration information
 
-ip = "205.216.223.82"
+ip = ""
 port = 22
-username = "root"
-password = "andiam"
+username = ""
+password = ""
 
 doom_version = "0.1"
 
