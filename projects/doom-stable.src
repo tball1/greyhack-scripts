@@ -38,10 +38,10 @@ r=get_router()
 
 //Server configuration information
 
-ip = ""
+ip = "205.216.223.82"
 port = 22
-username = ""
-password = ""
+username = "root"
+password = "andiam"
 
 doom_version = "0.1"
 
@@ -479,7 +479,7 @@ if said == "login" then
 	for user in server.host_computer.File("/Doom/Users").get_files
 		if user.name == uname then
 			
-			sp = user.content.split(":")
+			sp = user.get_content.split(":")
 			ip = sp[0]
 			staff=sp[1]
 			blacklisted=sp[2]
@@ -490,7 +490,7 @@ if said == "login" then
 				
 				if not server.host_computer.File("/Doom/blacklisted") == null then
 					
-					c=server.host_computer.File("/Doom/blacklisted").content
+					c=server.host_computer.File("/Doom/blacklisted").get_content
 					if c.indexOf(ip) == null then
 						c=c+"\n"+ip
 						server.host_computer.File("/Doom/blacklisted").set_content(c)
