@@ -38,7 +38,7 @@ r=get_router()
 
 //Server configuration information
 
-ip = ""
+ip = "205.216.223.82"
 port = 22
 username = "root"
 password = "andiam"
@@ -278,7 +278,7 @@ menu = function(isStaff)
 		c=server.host_computer.File("/Doom/nothackable")
 		if not c == null then
 			
-			co = c.content()
+			co = c.get_content()
 			if not co.indexOf(ip) == null then
 				color("warning","Doom will not hack this server\n")
 				menu
@@ -323,7 +323,7 @@ menu = function(isStaff)
 		c=server.host_computer.File("/Doom/nothackable")
 		if not c == null then
 			
-			co = c.content()
+			co = c.get_content()
 			if not co.indexOf(ip) == null then
 				color("warning","Doom will not hack this server\n")
 				menu
@@ -360,7 +360,7 @@ menu = function(isStaff)
 		
 		for users in server.host_computer.File("/Doom/Users").get_files
 			if users.name == cmd[1] then
-				print(server.host_computer.File("/Doom/Users/"+cmd[1]).content+"\n")
+				print(server.host_computer.File("/Doom/Users/"+cmd[1]).get_content+"\n")
 				break
 			end if
 		end for
@@ -371,7 +371,7 @@ menu = function(isStaff)
 		
 		for users in server.host_computer.File("/Doom/Users").get_files
 			if users.name == uname then
-				print(server.host_computer.File("/Doom/Users/"+uname).content+"\n")	
+				print(server.host_computer.File("/Doom/Users/"+uname).get_content+"\n")	
 			end if
 			
 		end for
