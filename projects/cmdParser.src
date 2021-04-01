@@ -1,0 +1,56 @@
+//This is a WIP command processing script
+//it handles everything all you gotta do is copy what this does
+
+
+cmds = {}
+
+cmds.input = {}
+cmds.input.argss = true //set true if this command might or will take arguments
+cmds.input.func = function(args=null)
+
+    //if args are null theres no arguments
+    if args == null then
+        return "Hello, world!"
+    end if
+        return args[1:].join(" ")
+
+end function
+
+
+shell = function()
+	while true
+		said = user_input("> ")
+		if cmds.hasIndex(said.split(" ")[0]) then
+			f=@cmds[said.split(" ")[0]].func
+            pipes = said.split(";")
+            pipeslist = []
+            if 2 <= len(pipes) then
+                //print("pipe")
+                for command in pipes
+                    if command == pipes[0] then
+                        pipeslist.push(command[:-1])
+                        continue
+                    end if
+                    pipeslist.push(command[1:])
+                end for
+                print(pipeslist)
+            end if
+            args = said.split(" ")[1:]
+            if cmds[said.split(" ")[0]].argss then
+                if len(args) != 0 then
+                    out = f(args)
+                else
+                    out = f
+                end if
+			else
+				out = f
+			end if
+			return out
+		end if
+	end while
+end function
+
+while true
+    got = shell
+    print(got)
+end while
