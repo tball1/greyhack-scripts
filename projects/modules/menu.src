@@ -1,0 +1,62 @@
+menu = {}
+
+colors = {}
+colors.gray = "#242623"
+colors.cyan = "#07efe4"
+
+menu.textDropDown = function(text,dropdowns)
+    print("    <color="+colors.gray+"><b>[\_]</b></color> <color=#bc04d8><b>"+text+"</b></color>")
+
+    for item in dropdowns
+
+        print("             <color="+colors.gray+">\_</color> "+item)
+        if item != dropdowns[len(dropdowns)-1] then
+            print("             <color="+colors.gray+">|</color>")
+
+        end if
+
+    end for
+
+    return dropdowns
+end function
+
+
+menu.textDropDownInput = function(text,dropdowns,q)
+
+    options = menu.textDropDown(text,dropdowns)
+
+    said = user_input(q)
+    for option in options
+        if said == option then
+            
+            return option
+            break
+
+        end if
+    end for
+
+    return null
+end function
+
+
+menu.optionSelect = function(options,q)
+    c=0
+    for option in options
+
+        print(c+". "+option)
+        c=c+1
+
+    end for
+
+    pick = user_input("Number:")
+    pick = pick.to_int
+
+    if pick <= c then
+        return options[pick]
+    else
+        return null
+    end if
+    
+    return null
+
+end function
