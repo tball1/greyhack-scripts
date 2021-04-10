@@ -1,19 +1,9 @@
 //Riot is a way of seperating code up into different "modules" then combining it into one executable
 
-//Why?
-//Because it allows for cleaner code while developing
+//PLANS:
+//  Module src encryption
+//  Automatic deletion of old imported modules in scripts
 
-//How?
-//Every file that is in the /modules folder gets its contents added on too the target file
-//this adds the illusion of importing stuff
-
-//Planned features
-//NOTE: Some features may be cut during development
-
-//Riot modules will not work if another module system is used
-//Riot modules are exclusively supported by Riot an nothing else
-
-//Riot will be capable of encrypting module files
 
 
 
